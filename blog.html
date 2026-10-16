@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Marked.js for parsing Markdown files -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.js"></script>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-blue-500 selection:text-white">
+    <header class="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="index.html" class="text-lg font-bold tracking-tight bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent">Ujwal S</a>
+            <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-400">
+                <a href="index.html" class="hover:text-blue-400">Home</a>
+                <a href="projects.html" class="hover:text-blue-400">Projects</a>
+                <a href="https://medium.com/@us837" target="_blank" rel="noopener noreferrer" class="hover:text-blue-400 transition-colors">Blog</a>
+                <a href="experience.html" class="hover:text-blue-400">Experience</a>
+                <a href="credentials.html" class="hover:text-blue-400">Credentials</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-3xl mx-auto px-6 pt-32 pb-24 space-y-12">
+        <div class="space-y-2">
+            <h1 class="text-3xl font-extrabold text-white">Writings</h1>
+            <p class="text-slate-400 text-sm">Thoughts on engineering, systems, software, and building products.</p>
+        </div>
+
+        <!-- BLOG LIST VIEW -->
+        <div id="blog-list" class="space-y-8">
+            <!-- Sample Blog Item 1 (Internal Markdown or External Medium/Substack Link) -->
+            <article class="border-b border-slate-900 pb-6 space-y-2">
+                <span class="text-xs text-slate-500">October 15, 2026</span>
+                <h2 class="text-xl font-semibold text-white hover:text-blue-400 transition-colors">
+                    <a href="#" onclick="loadBlogPost('blogs/post-1.md'); return false;">How India’s digital payment system UPI works?</a>
+                </h2>
+                <p class="text-slate-400 text-sm leading-relaxed">
+                    Unified Payment interface (UPI) is a digital payment system developed by National Payment Corporation of India commonly known as NPCI. NPCI is a government organisation which was founded in 2008. The goal of NPCI was to operate the retail payments and settlement system in India.
+                </p>
+                <div class="pt-2">
+                    <!-- Read More can open local markdown reader OR an external Medium/Substack link -->
+                    <a href="https://ujwalsharma837c264404c9e3.wordpress.com/2025/02/17/how-indias-digital-payment-system-upi-works/" class="text-xs font-medium text-blue-400 hover:underline">Read More →</a>
+                    <!-- Example External Link format: <a href="https://medium.com/..." target="_blank" class="text-xs font-medium text-blue-400 hover:underline">Read More on Medium ↗</a> -->
+                </div>
+            </article>
+            
+            <article class="border-b border-slate-900 pb-6 space-y-2">
+                <span class="text-xs text-slate-500">October 15, 2026</span>
+                <h2 class="text-xl font-semibold text-white hover:text-blue-400 transition-colors">
+                    <a href="#" onclick="loadBlogPost('blogs/post-1.md'); return false;">Understanding Distributed Systems & Tail Latency</a>
+                </h2>
+                <p class="text-slate-400 text-sm leading-relaxed">
+                    A deep dive into p99 latency, why arithmetic averages lie when measuring server response times, and how backpressure safeguards downstream microservices.
+                </p>
+                <div class="pt-2">
+                    <!-- Read More can open local markdown reader OR an external Medium/Substack link -->
+                    <a href="#" onclick="loadBlogPost('blogs/post-1.md'); return false;" class="text-xs font-medium text-blue-400 hover:underline">Read More →</a>
+                    <!-- Example External Link format: <a href="https://medium.com/..." target="_blank" class="text-xs font-medium text-blue-400 hover:underline">Read More on Medium ↗</a> -->
+                </div>
+            </article>
+
+            <!-- Repeat similar article structures for posts 2 through 10 -->
+            <article class="border-b border-slate-900 pb-6 space-y-2">
+                <span class="text-xs text-slate-500">October 10, 2026</span>
+                <h2 class="text-xl font-semibold text-white hover:text-blue-400 transition-colors">
+                    <a href="#" onclick="loadBlogPost('blogs/post-2.md'); return false;">Building Resilient Backend Caching with Redis</a>
+                </h2>
+                <p class="text-slate-400 text-sm leading-relaxed">
+                    Strategies for setting up connection pooling, rate limiting middleware, and persistent cache layers inside containerized Docker environments.
+                </p>
+                <div class="pt-2">
+                    <a href="#" onclick="loadBlogPost('blogs/post-2.md'); return false;" class="text-xs font-medium text-blue-400 hover:underline">Read More →</a>
+                </div>
+            </article>
+
+            <!-- Hidden container for blogs 11+ -->
+            <div id="extra-blogs" class="hidden space-y-8 pt-4">
+                <article class="border-b border-slate-900 pb-6 space-y-2">
+                    <span class="text-xs text-slate-500">September 28, 2026</span>
+                    <h2 class="text-xl font-semibold text-white">
+                        <a href="#" onclick="loadBlogPost('blogs/post-11.md'); return false;">Post Eleven Title Here</a>
+                    </h2>
+                    <p class="text-slate-400 text-sm">Short description for blog post eleven...</p>
+                    <div class="pt-2">
+                        <a href="#" onclick="loadBlogPost('blogs/post-11.md'); return false;" class="text-xs font-medium text-blue-400 hover:underline">Read More →</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+
+        <!-- All Blogs Button (reveals posts past the first 10) -->
+        <div id="show-all-blogs-container" class="text-center pt-4">
+            <button onclick="revealAllBlogs()" class="px-6 py-3 bg-slate-800 hover:bg-slate-700 text-white font-medium rounded-lg text-sm transition-colors border border-slate-700 shadow-md">
+                All Blogs
+            </button>
+        </div>
+
+        <!-- SINGLE BLOG READER VIEW (Injected dynamically when Read More is clicked) -->
+        <div id="blog-reader" class="hidden space-y-6">
+            <button onclick="closeBlogPost()" class="inline-flex items-center gap-2 text-sm text-blue-400 hover:underline mb-4">
+                ← Back to all blogs
+            </button>
+            <div id="blog-content" class="prose prose-invert max-w-none text-slate-300 leading-relaxed space-y-4">
+                <!-- Markdown rendered output appears here -->
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function revealAllBlogs() {
+            document.getElementById('extra-blogs').classList.remove('hidden');
+            document.getElementById('show-all-blogs-container').style.display = 'none';
+        }
+
+        async function loadBlogPost(filePath) {
+            try {
+                const response = await fetch(filePath);
+                if (!response.ok) throw new Error('Blog post not found.');
+                const markdownText = await response.text();
+                
+                // Parse markdown to HTML using marked.js
+                document.getElementById('blog-content').innerHTML = marked.parse(markdownText);
+                
+                // Switch view
+                document.getElementById('blog-list').classList.add('hidden');
+                document.getElementById('show-all-blogs-container').classList.add('hidden');
+                document.getElementById('blog-reader').classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } catch (error) {
+                alert('Could not load blog post. Make sure the markdown file exists in the blogs/ folder.');
+            }
+        }
+
+        function closeBlogPost() {
+            document.getElementById('blog-reader').classList.add('hidden');
+            document.getElementById('blog-list').classList.remove('hidden');
+            document.getElementById('show-all-blogs-container').classList.remove('block');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
